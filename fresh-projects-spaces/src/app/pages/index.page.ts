@@ -25,7 +25,7 @@ interface Property {
       <div *ngIf="properties">
         <div *ngFor="let property of properties" class="border p-4 mb-4 rounded-md">
           <a [routerLink]="['/properties', property.id]">
-            <img [src]="property.house.thumbnail" alt="{{ property.house.title }}" class="w-full h-48 object-cover mb-4">
+            <img [src]="property.house.thumbnail" alt="{{ property.house.title }}" class="w-full h-48 object-cover mb-4" loading="lazy">
             <h2 class="text-xl font-semibold">{{ property.house.title }}</h2>
             <p>{{ property.house.address }}</p>
             <p class="text-lg font-bold">{{ property.house.price }}</p>

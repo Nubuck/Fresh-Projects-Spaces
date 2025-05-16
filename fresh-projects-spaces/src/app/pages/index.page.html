@@ -1,0 +1,8 @@
+<div *ngFor="let property of properties">
+        <a [routerLink]="['/properties', property.id]">
+          <img [src]="property.house.thumbnail" alt="{{ property.house.title }}" loading="lazy">
+          <h3>{{ property.house.title }}</h3>
+          <p>{{ property.house.price }}</p>
+          <p>{{ property.house.address }}</p>
+        </a>
+      </div>
