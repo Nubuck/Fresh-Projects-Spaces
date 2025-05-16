@@ -1,3 +1,9 @@
 <div>
-  <img [src]="floorplanImageUrl" alt="House Floorplan">
+  <img [src]="floorplanImageUrl" alt="House Floorplan" usemap="#floorplan-map">
 </div>
+
+<map name="floorplan-map">
+  <area shape="rect" coords="0,0,10,10" alt="Room 1" (click)="onRoomClick('room-1-placeholder')">
+  <area shape="rect" coords="20,20,30,30" alt="Room 2" (click)="onRoomClick('room-2-placeholder')">
+  <!-- Add more area tags for other rooms -->
+</map>
