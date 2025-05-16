@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Projects Spaces - Beautiful Family Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #74BA43;
+      --color-success: #42758F;
+      --color-warning: #EB6209;
+      --color-dark-background: #3D3D3C;
+      --color-light-background: #F0F5FF;
+      --color-dark-text: #152542;
+      --color-light-text: #3E547C;
+      --font-family-0: 'Raleway', sans-serif;
+      --font-family-1: 'Inter', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-family-1);
+      color: var(--color-dark-text);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-family-1);
+    }
+    
+    .bg-primary {
+      background-color: var(--color-primary);
+    }
+    
+    .text-primary {
+      color: var(--color-primary);
+    }
+    
+    .border-primary {
+      border-color: var(--color-primary);
+    }
+    
+    .bg-success {
+      background-color: var(--color-success);
+    }
+    
+    .text-success {
+      color: var(--color-success);
+    }
+    
+    .bg-warning {
+      background-color: var(--color-warning);
+    }
+    
+    .text-warning {
+      color: var(--color-warning);
+    }
+    
+    .text-dark {
+      color: var(--color-dark-text);
+    }
+    
+    .text-light {
+      color: var(--color-light-text);
+    }
+    
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn-primary:hover {
+      opacity: 0.9;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #F0F7E8;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .room-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .room-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Floorplan interaction styles */
+    .floorplan-area {
+      fill: rgba(116, 186, 67, 0.1);
+      stroke: var(--color-primary);
+      stroke-width: 2;
+      cursor: pointer;
+      transition: fill 0.3s ease;
+    }
+    
+    .floorplan-area:hover, .floorplan-area.active {
+      fill: rgba(116, 186, 67, 0.3);
+    }
+    
+    .floorplan-label {
+      font-family: var(--font-family-1);
+      font-size: 12px;
+      fill: var(--color-dark-text);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center">
+        <!-- Replace with your actual logo -->
+        <svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Simple placeholder logo for Fresh Projects -->
+          <path d="M20 10H40V15H20V10Z" fill="#74BA43"/>
+          <path d="M20 17.5H40V22.5H20V17.5Z" fill="#74BA43"/>
+          <path d="M20 25H40V30H20V25Z" fill="#74BA43"/>
+          <path d="M45 15H160V20H45V15Z" fill="#152542"/>
+          <path d="M45 25H120V30H45V25Z" fill="#152542"/>
+        </svg>
+        <span class="ml-2 text-xl font-medium text-dark">Spaces</span>
+      </a>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          <li><a href="#" class="text-light-text hover:text-primary transition">Home</a></li>
+          <li><a href="#" class="text-light-text hover:text-primary transition">Listings</a></li>
+          <li><a href="#" class="text-light-text hover:text-primary transition">About</a></li>
+          <li><a href="#" class="text-light-text hover:text-primary transition">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="btn-secondary hidden md:inline-block">Sign In</a>
+        <a href="#" class="btn-primary">Get Started</a>
+        <button class="md:hidden focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Property Hero Section -->
+  <section class="container mx-auto px-4 py-8 md:py-12">
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-medium text-dark mb-2">Beautiful Family Home</h1>
+        <p class="text-light-text text-lg mb-2">123 Peaceful Avenue, Northcliff, Johannesburg</p>
+        <p class="text-primary text-2xl font-medium">R 3,795,000</p>
+      </div>
+      <div class="mt-4 md:mt-0 flex space-x-4">
+        <button class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          Save
+        </button>
+        <button class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          Contact Agent
+        </button>
+      </div>
+    </div>
+
+    <!-- Property Gallery -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+      <div class="md:col-span-2 h-80 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="House Front View" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden md:grid grid-rows-2 gap-4">
+        <div class="bg-gray-200 rounded-lg overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="House Interior" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-gray-200 rounded-lg overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="House Garden" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+
+    <!-- Property Specs -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 text-center">
+      <div class="bg-light-background rounded-lg p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <h3 class="text-dark font-medium mb-1">Property Type</h3>
+        <p class="text-light-text">Single Family Home</p>
+      </div>
+      <div class="bg-light-background rounded-lg p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <h3 class="text-dark font-medium mb-1">Bedrooms</h3>
+        <p class="text-light-text">4</p>
+      </div>
+      <div class="bg-light-background rounded-lg p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+        </svg>
+        <h3 class="text-dark font-medium mb-1">Bathrooms</h3>
+        <p class="text-light-text">2.5</p>
+      </div>
+      <div class="bg-light-background rounded-lg p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+        </svg>
+        <h3 class="text-dark font-medium mb-1">Square Feet</h3>
+        <p class="text-light-text">2,450</p>
+      </div>
+    </div>
+
+    <!-- Floorplan & Room Details Section -->
+    <div class="flex flex-col md:flex-row gap-8 mb-12">
+      <!-- Floorplan Column -->
+      <div class="w-full md:w-1/2 bg-white rounded-lg shadow p-6">
+        <h2 class="text-2xl font-medium text-dark mb-6">Floorplan</h2>
+        <div class="floorplan-container w-full">
+          <!-- Example SVG Floorplan - This would be replaced with your actual floorplan SVG -->
+          <svg width="100%" viewBox="0 0 500 400" class="border border-gray-200 rounded-lg">
+            <!-- Living Room -->
+            <polygon id="living-room" class="floorplan-area" points="50,50 250,50 250,150 50,150" data-room="living-room"></polygon>
+            <text x="150" y="100" class="floorplan-label" text-anchor="middle">Living Room</text>
+            
+            <!-- Kitchen -->
+            <polygon id="kitchen" class="floorplan-area" points="250,50 450,50 450,150 250,150" data-room="kitchen"></polygon>
+            <text x="350" y="100" class="floorplan-label" text-anchor="middle">Kitchen</text>
+            
+            <!-- Master Bedroom -->
+            <polygon id="master-bedroom" class="floorplan-area" points="50,150 200,150 200,300 50,300" data-room="master-bedroom"></polygon>
+            <text x="125" y="225" class="floorplan-label" text-anchor="middle">Master Bedroom</text>
+            
+            <!-- Bathroom -->
+            <polygon id="bathroom" class="floorplan-area" points="200,150 300,150 300,225 200,225" data-room="bathroom"></polygon>
+            <text x="250" y="187.5" class="floorplan-label" text-anchor="middle">Bath</text>
+            
+            <!-- Bedroom 2 -->
+            <polygon id="bedroom-2" class="floorplan-area" points="300,150 450,150 450,225 300,225" data-room="bedroom-2"></polygon>
+            <text x="375" y="187.5" class="floorplan-label" text-anchor="middle">Bedroom 2</text>
+            
+            <!-- Bedroom 3 -->
+            <polygon id="bedroom-3" class="floorplan-area" points="300,225 450,225 450,300 300,300" data-room="bedroom-3"></polygon>
+            <text x="375" y="262.5" class="floorplan-label" text-anchor="middle">Bedroom 3</text>
+            
+            <!-- Bathroom 2 -->
+            <polygon id="bathroom-2" class="floorplan-area" points="200,225 300,225 300,300 200,300" data-room="bathroom-2"></polygon>
+            <text x="250" y="262.5" class="floorplan-label" text-anchor="middle">Bath 2</text>
+            
+            <!-- Garden -->
+            <polygon id="garden" class="floorplan-area" points="50,300 450,300 450,350 50,350" data-room="garden"></polygon>
+            <text x="250" y="325" class="floorplan-label" text-anchor="middle">Garden</text>
+          </svg>
+        </div>
+        <p class="text-sm text-light-text mt-4">Click on a room to view details and photos</p>
+      </div>
+      
+      <!-- Room Details Column -->
+      <div id="room-details" class="w-full md:w-1/2 bg-white rounded-lg shadow p-6">
+        <h2 class="text-2xl font-medium text-dark mb-2">Living Room</h2>
+        <p class="text-light-text mb-6">A spacious, light-filled living area with hardwood floors and large windows overlooking the garden. Perfect for family gatherings and entertaining guests.</p>
+        
+        <!-- Room Photos -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-200 rounded-lg overflow-hidden h-40">
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Living Room" class="w-full h-full object-cover">
+          </div>
+          <div class="bg-gray-200 rounded-lg overflow-hidden h-40">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Living Room Window View" class="w-full h-full object-cover">
+          </div>
+        </div>
+        
+        <!-- Room Features -->
+        <div class="mt-6">
+          <h3 class="text-lg font-medium text-dark mb-2">Features</h3>
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Hardwood flooring</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Large windows</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Recessed lighting</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Fireplace</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Property Description -->
+    <div class="bg-white rounded-lg shadow p-6 mb-12">
+      <h2 class="text-2xl font-medium text-dark mb-4">About this property</h2>
+      <p class="text-light-text mb-4">
+        This beautiful family home offers the perfect blend of comfort, style, and functionality. Located in a peaceful neighborhood, the property features 4 bedrooms, 2.5 bathrooms, and a generous living space spanning 2,450 square feet.
+      </p>
+      <p class="text-light-text mb-4">
+        The open floor plan creates a seamless flow between the living room, dining area, and kitchen, making it ideal for both everyday living and entertaining. Large windows throughout the house invite abundant natural light, creating a warm and welcoming atmosphere.
+      </p>
+      <p class="text-light-text mb-4">
+        The spacious backyard provides a perfect outdoor retreat, featuring a covered patio, landscaped garden, and ample space for recreational activities. Additional highlights include a two-car garage, energy-efficient appliances, and modern finishes throughout.
+      </p>
+      <button id="show-more" class="text-primary font-medium hover:underline focus:outline-none">
+        Show more
+      </button>
+    </div>
+
+    <!-- Neighborhood Section -->
+    <div class="bg-white rounded-lg shadow p-6 mb-12">
+      <h2 class="text-2xl font-medium text-dark mb-4">Neighborhood</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <p class="text-light-text mb-4">
+            Located in the desirable Northcliff area, this property offers the perfect balance of peaceful suburban living with convenient access to amenities. The neighborhood features tree-lined streets, friendly neighbors, and a strong sense of community.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Close to highly-rated schools</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Minutes from shopping centers and restaurants</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Easy access to public transportation</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">Multiple parks and green spaces nearby</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-gray-200 rounded-lg overflow-hidden h-64">
+          <!-- This could be a map or neighborhood image -->
+          <img src="https://images.unsplash.com/photo-1590674507982-af0a96c4e8b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Neighborhood" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-background text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <a href="#" class="flex items-center mb-4">
+            <!-- Replace with your actual logo -->
+            <svg width="150" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Simple placeholder logo for Fresh Projects -->
+              <path d="M20 10H40V15H20V10Z" fill="#74BA43"/>
+              <path d="M20 17.5H40V22.5H20V17.5Z" fill="#74BA43"/>
+              <path d="M20 25H40V30H20V25Z" fill="#74BA43"/>
+              <path d="M45 15H160V20H45V15Z" fill="#FFFFFF"/>
+              <path d="M45 25H120V30H45V25Z" fill="#FFFFFF"/>
+            </svg>
+          </a>
+          <p class="text-gray-400 mb-4">Fresh Projects Spaces: Find your perfect home with ease.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Properties</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Agents</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-4">Contact Info</h4>
+          <address class="not-italic text-gray-400">
+            <p class="mb-2">123 Business Street</p>
+            <p class="mb-2">Johannesburg, 2000</p>
+            <p class="mb-2">South Africa</p>
+          </address>
+          <p class="text-gray-400 mb-2">
+            <span class="font-medium text-white">Phone:</span> +27 11 123 4567
+          </p>
+          <p class="text-gray-400">
+            <span class="font-medium text-white">Email:</span> info@freshprojects.co.za
+          </p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-4">Newsletter</h4>
+          <p class="text-gray-400 mb-4">Stay updated with our latest property listings and news.</p>
+          <form class="flex">
+            <input type="email" placeholder="Your email address" class="rounded-l-lg px-4 py-2 w-full focus:outline-none text-gray-800">
+            <button type="submit" class="bg-primary hover:bg-opacity-90 text-white px-4 py-2 rounded-r-lg transition">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 Fresh Projects Spaces. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for room selection in floorplan -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all floorplan areas
+      const floorplanAreas = document.querySelectorAll('.floorplan-area');
+      
+      // Room data - in a real app, this would come from an API
+      const roomData = {
+        'living-room': {
+          name: 'Living Room',
+          description: 'A spacious, light-filled living area with hardwood floors and large windows overlooking the garden. Perfect for family gatherings and entertaining guests.',
+          features: ['Hardwood flooring', 'Large windows', 'Recessed lighting', 'Fireplace'],
+          photos: [
+            'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'kitchen': {
+          name: 'Kitchen',
+          description: 'A modern kitchen with high-end appliances, granite countertops, and custom cabinetry. The island provides additional counter space and casual seating.',
+          features: ['Granite countertops', 'Stainless steel appliances', 'Custom cabinetry', 'Kitchen island'],
+          photos: [
+            'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'master-bedroom': {
+          name: 'Master Bedroom',
+          description: 'A serene master suite with plenty of natural light and a walk-in closet. The en-suite bathroom features a dual vanity and a luxurious soaking tub.',
+          features: ['Walk-in closet', 'En-suite bathroom', 'Ceiling fan', 'Carpet flooring'],
+          photos: [
+            'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1540518614846-7eded433c457?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'bathroom': {
+          name: 'Main Bathroom',
+          description: 'A beautifully designed bathroom with modern fixtures, a glass shower enclosure, and marble countertops.',
+          features: ['Glass shower', 'Marble countertops', 'Heated floors', 'LED lighting'],
+          photos: [
+            'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'bedroom-2': {
+          name: 'Bedroom 2',
+          description: 'A comfortable bedroom with ample space for a queen bed and additional furniture. Features a large closet and plenty of natural light.',
+          features: ['Spacious closet', 'Ceiling fan', 'Carpet flooring', 'Built-in shelving'],
+          photos: [
+            'https://images.unsplash.com/photo-1556020685-ae41abfc9365?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'bedroom-3': {
+          name: 'Bedroom 3',
+          description: 'A versatile room that can be used as a bedroom, home office, or playroom. Features include a closet and hardwood floors.',
+          features: ['Hardwood floors', 'Closet space', 'Multiple windows', 'Versatile use'],
+          photos: [
+            'https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'bathroom-2': {
+          name: 'Bathroom 2',
+          description: 'A second full bathroom with a tub/shower combo, modern vanity, and ceramic tile flooring.',
+          features: ['Tub/shower combo', 'Modern vanity', 'Ceramic tile', 'Linen closet'],
+          photos: [
+            'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1604709177225-055f99402ea3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        },
+        'garden': {
+          name: 'Garden',
+          description: 'A beautiful landscaped garden with a patio area, perfect for outdoor entertaining and relaxation.',
+          features: ['Covered patio', 'Landscaped beds', 'Irrigation system', 'Outdoor lighting'],
+          photos: [
+            'https://images.unsplash.com/photo-1558521558-e055f83238fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1568484653093-ed0bd698f886?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+          ]
+        }
+      };
+      
+      // Room details element
+      const roomDetailsElement = document.getElementById('room-details');
+      
+      // Function to update room details
+      function updateRoomDetails(roomId) {
+        const room = roomData[roomId];
+        if (!room) return;
+        
+        // Remove active class from all rooms
+        floorplanAreas.forEach(area => {
+          area.classList.remove('active');
+        });
+        
+        // Add active class to selected room
+        document.getElementById(roomId).classList.add('active');
+        
+        // Update room details
+        let featuresHTML = '';
+        room.features.forEach(feature => {
+          featuresHTML += `
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-light-text">${feature}</span>
+            </li>
+          `;
+        });
+        
+        roomDetailsElement.innerHTML = `
+          <h2 class="text-2xl font-medium text-dark mb-2">${room.name}</h2>
+          <p class="text-light-text mb-6">${room.description}</p>
+          
+          <!-- Room Photos -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-200 rounded-lg overflow-hidden h-40">
+              <img src="${room.photos[0]}" alt="${room.name}" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-gray-200 rounded-lg overflow-hidden h-40">
+              <img src="${room.photos[1]}" alt="${room.name}" class="w-full h-full object-cover">
+            </div>
+          </div>
+          
+          <!-- Room Features -->
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-dark mb-2">Features</h3>
+            <ul class="grid grid-cols-2 gap-x-4 gap-y-2">
+              ${featuresHTML}
+            </ul>
+          </div>
+        `;
+      }
+      
+      // Add click event to all floorplan areas
+      floorplanAreas.forEach(area => {
+        area.addEventListener('click', function() {
+          const roomId = this.getAttribute('id');
+          updateRoomDetails(roomId);
+        });
+      });
+      
+      // Initialize with living room selected
+      updateRoomDetails('living-room');
+      
+      // Show more button functionality
+      const showMoreButton = document.getElementById('show-more');
+      showMoreButton.addEventListener('click', function() {
+        this.textContent = this.textContent === 'Show more' ? 'Show less' : 'Show more';
+      });
+    });
+  </script>
+</body>
+</html>
