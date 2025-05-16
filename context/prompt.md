@@ -1,0 +1,21 @@
+This is the first time I'm using Firbase studio and I already feeling like this is the place for me.
+Thank you, your assessment is excellent and has given me the perspective I needed.
+Now please guide me on the best way for us to communicate about assets and files in the project, so for now I will reference project assets and files by relative paths.
+
+I am going to answer your clarifying questions, followed by a directive on my updated design decisions from the perspective of your assesment:
+
+- Q: What is the format of the floorplan asset provided in the Google Drive link (SVG, raster image, etc.)? This will significantly impact the floorplan implementation strategy.
+    - A: I have added a few of the provided assets in the work space folder /context/assets (this was the mention of the shared Google drive - no integration needed I just downloaded the assets) - the floor plans and the property space images are all jpg format - they are quite large and I feel should be optimized before being served to a public consumer web site that should load as quickly as possible - so perhaps we can look at Analogs API route to compress and optimize an initial image asset and lazy load the high quality images after initial load - or if there is some fetching assistance Analog can offer
+- Q: Are there any specific performance metrics or targets you should aim for (e.g., a certain Lighthouse score)? Knowing this can help prioritize optimization efforts.
+    - A: since we are here in firebase studio and I am most familiar with Google products and conventions, lets go with the Google page speed metrics
+- Q: Are there any constraints on the use of external libraries beyond the ones you've already chosen (Analog, Tailwind, spartan/ui)?
+    - A: not specifically, I am open to using the best tool for the job - my choice to use Analog is because Fresh Projects uses Angular and I chose spartan/ui because it is inspired by Shadcn/ui the copy paste components I have come to rely on - it also is less friction than a UI library because the component code lives in the code base and can easily be edited to our needs. I realised from your assessment I wrote the solution design before I received the assets - there are no SVG floor plan assets and thus we must assume svg floor plans are not in scope and to be disregarded.
+
+Now I will explain the changes to the solution design after your assessment:
+- Hard Coded data only - Simon the CEO did mention that backend services are not a requirement and static data is expected - I still want to use either Analog API routes or just the Analog data fetching as a simulated back end demonstration of my 25 years of full stack development - so lets disregard the SQLite and dynamic data features - I've been so busy this week I don't even have time for this feature anyway - no separate services - use what Analog provides as much as possible
+- I was exploring the firebase studio and I see I can host web app with Firebase - would Firebase be able to host this Analog app as a more convenient alternative to the planned Fly.io?
+- My plan for optimization demonstration can be simply stated: leveraging Angalog server side rendering to speed up initial page load and serving optimized image assets with a lazy loaded image after initial page load for high quality images.
+
+Now in terms of UI design I do not have any mock up designs, so I am hoping you can assist creating the UI to maximize clean, user friendliness, Tailwind CSS and spartan/ui provide good design system patterns to achieve this. I have also included the Fresh Projects SVG logo at /context/fp_logo_horizontal.svg and the Fresh Project brand colors from their website at https://www.gofreshprojects.com/ in the file /context/freshprojects.css to use as the brand them from the project - naturally to not use the /context/freshprojects.css file directly but use the css color and font variables as the Tailwind theme settings.
+
+With all that said, please let me know if there is any further clarifying questions you have before you start generating the project to the requirements we have covered.
