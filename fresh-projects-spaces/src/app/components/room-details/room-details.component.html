@@ -1,0 +1,7 @@
+<div>
+  <h2>{{ room?.name }}</h2>
+  <p>{{ room?.description }}</p>
+  <div *ngIf="room?.photos && room?.photos!.length > 0">
+    <img [src]="room!.photos[0]" alt="{{ room?.name }} photo">
+  </div>
+</div>
