@@ -23,7 +23,7 @@ import { Property } from '../../models/property.model'
 
       <h2>Floor Plan</h2>
       <app-floorplan
-        [floorplanImageUrl]="property.house.floorplanThumbnail"
+        [floorplanImageUrl]="property.house.thumbnail"
         (roomSelected)="onRoomSelected($event)"
       ></app-floorplan>
 
